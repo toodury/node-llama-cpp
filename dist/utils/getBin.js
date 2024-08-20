@@ -7,7 +7,7 @@ import { defaultLlamaCppCudaSupport, defaultLlamaCppGitHubRepo, defaultLlamaCppM
 import { DownloadLlamaCppCommand } from "../cli/commands/DownloadCommand.js";
 import { getUsedBinFlag } from "./usedBinFlag.js";
 import { getCompiledLlamaCppBinaryPath } from "./compileLLamaCpp.js";
-const require = createRequire(import.meta.url);
+const nodeRequire = createRequire(import.meta.url);
 export async function getPrebuildBinPath() {
     function createPath(platform, arch) {
         return path.join(llamaBinsDirectory, `${platform}-${arch}/llama-addon.node`);
@@ -42,13 +42,13 @@ export async function loadBin() {
         }
         else {
             try {
-                return require(prebuildBinPath);
+                return nodeRequire(prebuildBinPath);
             }
             catch (err) {
                 console.error(`Failed to load prebuilt binary for platform "${process.platform}" "${process.arch}". Error:`, err);
                 console.info("Falling back to locally built binaries");
                 try {
-                    delete require.cache[require.resolve(prebuildBinPath)];
+                    delete nodeRequire.cache[nodeRequire.resolve(prebuildBinPath)];
                 }
                 catch (err) { }
             }
@@ -70,9 +70,9 @@ export async function loadBin() {
             if (modulePath == null) {
                 throw new Error("Failed to download and compile llama.cpp");
             }
-            return require(modulePath);
+            return nodeRequire(modulePath);
         }
     }
-    return require(modulePath);
+    return nodeRequire(modulePath);
 }
 //# sourceMappingURL=getBin.js.map
