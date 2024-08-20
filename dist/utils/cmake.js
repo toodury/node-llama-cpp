@@ -8,7 +8,7 @@ import { spawnCommand } from "./spawnCommand.js";
 import withStatusLogs from "./withStatusLogs.js";
 export async function hasBuiltinCmake() {
     try {
-        const resolvedPath = await which("cmake");
+        const resolvedPath = which.sync("cmake");
         return resolvedPath !== "";
     }
     catch (err) {
@@ -17,13 +17,13 @@ export async function hasBuiltinCmake() {
 }
 export async function getCmakePath() {
     try {
-        const resolvedPath = await which("cmake");
+        const resolvedPath = which.sync("cmake");
         if (resolvedPath !== "")
             return resolvedPath;
     }
     catch (err) { }
     try {
-        let resolvedPath = await which("cmake", {
+        let resolvedPath = which.sync("cmake", {
             path: path.join(llamaDirectory, "xpack", "xpacks", ".bin")
         });
         if (resolvedPath.toLowerCase().endsWith(".cmd"))
