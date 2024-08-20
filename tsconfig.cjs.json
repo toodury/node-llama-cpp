@@ -1,6 +1,12 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "CommonJS",
-  },
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "ES2022",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "Node",
+        "strict": true,
+        "outDir": "dist" // 빌드 결과물 저장 경로
+    },
+    "include": ["src/**/*"]
 }

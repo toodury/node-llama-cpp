@@ -11,7 +11,7 @@ import {DownloadLlamaCppCommand} from "../cli/commands/DownloadCommand.js";
 import {getUsedBinFlag} from "./usedBinFlag.js";
 import {getCompiledLlamaCppBinaryPath} from "./compileLLamaCpp.js";
 
-const require = createRequire(import.meta.url);
+const nodeRequire: NodeRequire = createRequire(__dirname);
 
 export async function getPrebuildBinPath(): Promise<string | null> {
     function createPath(platform: string, arch: string) {
@@ -57,13 +57,13 @@ export async function loadBin(): Promise<LlamaCppNodeModule> {
             console.warn("Prebuild binaries not found, falling back to to locally built binaries");
         } else {
             try {
-                return require(prebuildBinPath);
+                return nodeRequire(prebuildBinPath);
             } catch (err) {
                 console.error(`Failed to load prebuilt binary for platform "${process.platform}" "${process.arch}". Error:`, err);
                 console.info("Falling back to locally built binaries");
 
                 try {
-                    delete require.cache[require.resolve(prebuildBinPath)];
+                    delete nodeRequire.cache[nodeRequire.resolve(prebuildBinPath)];
                 } catch (err) {}
             }
         }
@@ -88,11 +88,11 @@ export async function loadBin(): Promise<LlamaCppNodeModule> {
                 throw new Error("Failed to download and compile llama.cpp");
             }
 
-            return require(modulePath);
+            return nodeRequire(modulePath);
         }
     }
 
-    return require(modulePath);
+    return nodeRequire(modulePath);
 }
 
 export type LlamaCppNodeModule = {

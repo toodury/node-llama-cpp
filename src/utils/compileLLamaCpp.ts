@@ -1,5 +1,5 @@
 import path from "path";
-import {fileURLToPath} from "url";
+// import {fileURLToPath} from "url";
 import process from "process";
 import fs from "fs-extra";
 import chalk from "chalk";
@@ -11,7 +11,7 @@ import {setUsedBinFlag} from "./usedBinFlag.js";
 import {spawnCommand} from "./spawnCommand.js";
 import {fixXpackPermissions, getCmakePath, hasBuiltinCmake} from "./cmake.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function compileLlamaCpp({
     arch = process.arch, nodeTarget = process.version, setUsedBinFlag: setUsedBinFlagArg = true, metal = process.platform === "darwin",

@@ -1,4 +1,4 @@
-import {fileURLToPath} from "url";
+// import {fileURLToPath} from "url";
 import * as path from "path";
 import * as os from "os";
 import process from "process";
@@ -6,7 +6,7 @@ import envVar from "env-var";
 import * as uuid from "uuid";
 import {getBinariesGithubRelease} from "./utils/binariesGithubRelease.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const env = envVar.from(process.env);
 
@@ -34,9 +34,16 @@ export const isCI = env.get("CI")
 export const defaultLlamaCppGitHubRepo = env.get("NODE_LLAMA_CPP_REPO")
     .default("ggerganov/llama.cpp")
     .asString();
-export const defaultLlamaCppRelease = env.get("NODE_LLAMA_CPP_REPO_RELEASE")
-    .default(await getBinariesGithubRelease())
-    .asString();
+
+export let defaultLlamaCppRelease = '';
+getBinariesGithubRelease().then((res: string) => {
+    defaultLlamaCppRelease = env.get("NODE_LLAMA_CPP_REPO_RELEASE")
+        .default(res)
+        .asString();
+});
+// export const defaultLlamaCppRelease = env.get("NODE_LLAMA_CPP_REPO_RELEASE")
+//     .default(returnBinary())
+//     .asString();
 export const defaultLlamaCppMetalSupport = env.get("NODE_LLAMA_CPP_METAL")
     .default(process.platform === "darwin" ? "true" : "false")
     .asBool();

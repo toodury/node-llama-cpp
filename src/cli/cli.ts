@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {fileURLToPath} from "url";
+// import {fileURLToPath} from "url";
 import path from "path";
 import yargs from "yargs";
 // eslint-disable-next-line node/file-extension-in-import
@@ -13,7 +13,7 @@ import {OnPostInstallCommand} from "./commands/OnPostInstallCommand.js";
 import {ClearCommand} from "./commands/ClearCommand.js";
 import {ChatCommand} from "./commands/ChatCommand.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const packageJson = fs.readJSONSync(path.join(__dirname, "..", "..", "package.json"));
 
