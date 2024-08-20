@@ -1,7 +1,7 @@
 import simpleGit, {SimpleGit} from "simple-git";
 import cliProgress from "cli-progress";
 import chalk from "chalk";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {llamaCppDirectory, llamaCppDirectoryTagFilePath} from "../config.js";
 import {getGitBundlePathForRelease} from "./gitReleaseBundles.js";
 

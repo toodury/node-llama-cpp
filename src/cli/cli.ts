@@ -5,7 +5,7 @@ import path from "path";
 import yargs from "yargs";
 // eslint-disable-next-line node/file-extension-in-import
 import {hideBin} from "yargs/helpers";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {cliBinName} from "../config.js";
 import {DownloadCommand} from "./commands/DownloadCommand.js";
 import {BuildCommand} from "./commands/BuildCommand.js";

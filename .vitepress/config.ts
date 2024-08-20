@@ -1,6 +1,6 @@
 import {defineConfig, DefaultTheme} from "vitepress";
 import path from "path";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {fileURLToPath} from "url";
 import typedocSidebar from "../docs/api/typedoc-sidebar.json"; // if this import fails, run `npm run docs:generateTypedoc`
 import envVar from "env-var";

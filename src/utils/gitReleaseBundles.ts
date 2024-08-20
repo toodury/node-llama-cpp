@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import simpleGit from "simple-git";
 import {currentReleaseGitBundlePath, defaultLlamaCppGitHubRepo, llamaCppDirectory} from "../config.js";
 import {getBinariesGithubRelease} from "./binariesGithubRelease.js";

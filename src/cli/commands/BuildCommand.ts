@@ -1,7 +1,7 @@
 import process from "process";
 import {CommandModule} from "yargs";
 import chalk from "chalk";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {compileLlamaCpp} from "../../utils/compileLLamaCpp.js";
 import withOra from "../../utils/withOra.js";
 import {clearTempFolder} from "../../utils/clearTempFolder.js";

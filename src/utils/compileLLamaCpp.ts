@@ -1,7 +1,7 @@
 import path from "path";
 import {fileURLToPath} from "url";
 import process from "process";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import chalk from "chalk";
 import {
     customCmakeOptionsEnvVarPrefix, documentationPageUrls, llamaCppDirectory, llamaDirectory, llamaToolchainsDirectory

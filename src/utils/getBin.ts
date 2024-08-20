@@ -2,7 +2,7 @@ import {createRequire} from "module";
 import * as console from "console";
 import path from "path";
 import process from "process";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {
     defaultLlamaCppCudaSupport, defaultLlamaCppGitHubRepo, defaultLlamaCppMetalSupport, defaultLlamaCppRelease, defaultSkipDownload,
     llamaBinsDirectory

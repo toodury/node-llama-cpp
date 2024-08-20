@@ -1,6 +1,6 @@
 import path from "path";
 import {fileURLToPath} from "url";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {getUsedBinFlag} from "./usedBinFlag.js";
 import {getClonedLlamaCppRepoReleaseTag} from "./cloneLlamaCppRepo.js";
 import {getBinariesGithubRelease} from "./binariesGithubRelease.js";

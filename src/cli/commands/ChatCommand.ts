@@ -3,7 +3,7 @@ import process from "process";
 import path from "path";
 import {CommandModule} from "yargs";
 import chalk from "chalk";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import withOra from "../../utils/withOra.js";
 import {chatCommandHistoryFilePath, defaultChatSystemPrompt} from "../../config.js";
 import {LlamaChatPromptWrapper} from "../../chatWrappers/LlamaChatPromptWrapper.js";

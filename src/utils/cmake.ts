@@ -1,5 +1,5 @@
 import path from "path";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import which from "which";
 import chalk from "chalk";
 import {chmodr} from "chmodrp";

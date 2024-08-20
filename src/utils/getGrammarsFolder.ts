@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {llamaBinsGrammarsDirectory, llamaCppGrammarsDirectory} from "../config.js";
 import {getUsedBinFlag} from "./usedBinFlag.js";
 

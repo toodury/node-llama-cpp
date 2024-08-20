@@ -1,7 +1,7 @@
 import process from "process";
 import {CommandModule} from "yargs";
 import {Octokit} from "octokit";
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import chalk from "chalk";
 import {
     defaultLlamaCppCudaSupport, defaultLlamaCppGitHubRepo, defaultLlamaCppMetalSupport, defaultLlamaCppRelease, isCI,

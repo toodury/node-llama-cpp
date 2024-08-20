@@ -1,4 +1,4 @@
-import fs from "fs-extra";
+import * as fs from "fs-extra";
 import {usedBinFlagJsonPath} from "../config.js";
 
 type UsedBinFlagFile = {
