@@ -42,7 +42,7 @@
   "scripts": {
     "prepare": "[ \"$CI\" = true ] || [ -d '.husky/_' ] || husky install",
     "prebuild": "rimraf ./dist ./tsconfig.tsbuildinfo",
-    "build": "tsc --build tsconfig.json --force",
+    "build": "tsc --build tsconfig.json --force && tsc --build tsconfig.cjs.json --force",
     "addPostinstallScript": "npm pkg set scripts.postinstall=\"node ./dist/cli/cli.js postinstall\"",
     "prewatch": "rimraf ./dist ./tsconfig.tsbuildinfo",
     "watch": "tsc --build tsconfig.json --watch --force",
