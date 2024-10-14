@@ -155,11 +155,8 @@ export async function getLlamaForOptions({ gpu = defaultLlamaCppGpuSupport, logL
     }
     if (shouldLogNoGlibcWarningIfNoBuildIsAvailable && progressLogs)
         await logNoGlibcWarning();
-    // if (!canBuild)
-    //     throw new NoBinaryFoundError();
-    if (!canBuild) {
-        throw new Error(`cannot build llama.cpp. canBuild: ${canBuild}, runningInsideAsar: ${runningInsideAsar}, hasBuildingFromSourceDependenciesInstalled: ${await hasBuildingFromSourceDependenciesInstalled()}`);
-    }
+    if (!canBuild)
+        throw new NoBinaryFoundError();
     const llamaCppRepoCloned = await isLlamaCppRepoCloned();
     if (!llamaCppRepoCloned) {
         if (skipDownload)

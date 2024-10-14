@@ -3,17 +3,14 @@ import { LlamaModel, LlamaModelOptions } from "../evaluator/LlamaModel/LlamaMode
 import { GbnfJsonSchema } from "../utils/gbnfJson/types.js";
 import { LlamaJsonSchemaGrammar } from "../evaluator/LlamaJsonSchemaGrammar.js";
 import { LlamaGrammar, LlamaGrammarOptions } from "../evaluator/LlamaGrammar.js";
-import { LlamaClasses } from "../utils/getLlamaClasses.js";
 import { LlamaGpuType, LlamaLogLevel } from "./types.js";
 export declare class Llama {
-    private _classes?;
     readonly onDispose: EventRelay<void>;
     private constructor();
     dispose(): Promise<void>;
     /** @hidden */
     [Symbol.asyncDispose](): Promise<void>;
     get disposed(): boolean;
-    get classes(): LlamaClasses;
     get gpu(): LlamaGpuType;
     get supportsGpuOffloading(): boolean;
     get supportsMmap(): boolean;

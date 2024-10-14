@@ -6,7 +6,6 @@ import { DisposeGuard } from "../utils/DisposeGuard.js";
 import { LlamaJsonSchemaGrammar } from "../evaluator/LlamaJsonSchemaGrammar.js";
 import { LlamaGrammar } from "../evaluator/LlamaGrammar.js";
 import { ThreadsSplitter } from "../utils/ThreadsSplitter.js";
-import { getLlamaClasses } from "../utils/getLlamaClasses.js";
 import { LlamaLocks, LlamaLogLevel } from "./types.js";
 import { MemoryOrchestrator } from "./utils/MemoryOrchestrator.js";
 const LlamaLogLevelToAddonLogLevel = new Map([
@@ -47,7 +46,6 @@ export class Llama {
     /** @internal */ _previousLogLevel = null;
     /** @internal */ _nextLogNeedNewLine = false;
     /** @internal */ _disposed = false;
-    _classes;
     onDispose = new EventRelay();
     constructor({ bindings, logLevel, logger, buildType, cmakeOptions, llamaCppRelease, debug, gpu, maxThreads, vramOrchestrator, vramPadding }) {
         this._bindings = bindings;
@@ -96,11 +94,6 @@ export class Llama {
     }
     get disposed() {
         return this._disposed;
-    }
-    get classes() {
-        if (this._classes == null)
-            this._classes = getLlamaClasses();
-        return this._classes;
     }
     get gpu() {
         return this._gpu;
