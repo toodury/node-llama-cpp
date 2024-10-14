@@ -6,7 +6,7 @@ import { builtinLlamaCppGitHubRepo, builtinLlamaCppRelease, defaultLlamaCppLogLe
 import { getConsoleLogPrefix } from "../utils/getConsoleLogPrefix.js";
 import { waitForLockfileRelease } from "../utils/waitForLockfileRelease.js";
 import { isGithubReleaseNeedsResolving, resolveGithubRelease } from "../utils/resolveGithubRelease.js";
-import { runningInsideAsar, runningInElectron } from "../utils/runtime.js";
+import { runningInsideAsar, runningInElectron, __filename } from "../utils/runtime.js";
 import { compileLlamaCpp, getLocalBuildBinaryBuildMetadata, getLocalBuildBinaryPath, getPrebuiltBinaryBuildMetadata, getPrebuiltBinaryPath } from "./utils/compileLLamaCpp.js";
 import { getLastBuildInfo } from "./utils/lastBuildInfo.js";
 import { getClonedLlamaCppRepoReleaseInfo, isLlamaCppRepoCloned } from "./utils/cloneLlamaCppRepo.js";
@@ -158,7 +158,7 @@ export async function getLlamaForOptions({ gpu = defaultLlamaCppGpuSupport, logL
     // if (!canBuild)
     //     throw new NoBinaryFoundError();
     if (!canBuild) {
-        throw new Error(`cannot build llama.cpp. canBuild: ${canBuild}, runningInsideAsar: ${runningInsideAsar}, hasBuildingFromSourceDependenciesInstalled: ${await hasBuildingFromSourceDependenciesInstalled()}`);
+        throw new Error(`cannot build llama.cpp. canBuild: ${canBuild}, runningInsideAsar: ${runningInsideAsar}, hasBuildingFromSourceDependenciesInstalled: ${await hasBuildingFromSourceDependenciesInstalled()}, __filename: ${__filename}`);
     }
     const llamaCppRepoCloned = await isLlamaCppRepoCloned();
     if (!llamaCppRepoCloned) {
