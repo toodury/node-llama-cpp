@@ -1,0 +1,12 @@
+import { CommandModule } from "yargs";
+import { BuildGpu } from "../../../../bindings/types.js";
+type InspectEstimateCommand = {
+    modelPath: string;
+    header?: string[];
+    gpu?: BuildGpu | "auto";
+    gpuLayers?: number | "max";
+    contextSize?: number | "train";
+    embedding?: boolean;
+};
+export declare const InspectEstimateCommand: CommandModule<object, InspectEstimateCommand>;
+export {};
